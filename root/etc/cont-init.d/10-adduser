@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+PUID=${PUID:-1001}
+PGID=${PGID:-1001}
+
+groupmod -o -g "$PGID" media
+usermod -o -u "$PUID" media
+
+echo "
+-------------------------------------
+GID/UID
+-------------------------------------
+User uid:    $(id -u media)
+User gid:    $(id -g media)
+-------------------------------------
+"
+chown media:media /app
+chown media:media /config
+chown media:media /defaults

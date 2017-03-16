@@ -1,0 +1,13 @@
+#!/bin/bash
+
+docker run -d --name=plex \
+--net=host \
+-e VERSION=latest \
+-e PUID=1001 -e PGID=1001 \
+-e TZ=US/Eastern \
+-v /etc/localtime:/etc/localtime:ro \
+-v /docker/config/plex:/config \
+-v /docker/media/tv:/data/tvshows \
+-v /docker/media/movies:/data/movies \
+-v /docker/media/music:/data/music \
+djavanargent/debian-plex
